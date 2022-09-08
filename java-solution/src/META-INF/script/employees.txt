@@ -1,0 +1,4 @@
+1, Richter, Ines, 48.0, FEMALE
+2, Baumeister, Sascha, 52.0, MALE
+3, Schmieder, Eva, 46.0, FEMALE
+4, Ritter, Andre, 50.0, DIVERSE
