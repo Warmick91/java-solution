@@ -5,7 +5,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import edu.damago.java.tool.JSON;
 
 
 /**
@@ -15,6 +23,11 @@ import java.sql.SQLException;
  */
 public class WorldApp {
 	static private enum DatabaseType { MYSQL, MARIA_DB, ORACLE_DB, MS_ACCESS, ODBC }
+
+	static private final String QUERY_COUNTRIES = "SELECT * FROM Country ORDER BY longCode";
+	static private final String QUERY_LANGUAGES = "SELECT * FROM CountryLanguage WHERE countryCode=? ORDER BY language";
+	static private final String QUERY_CITIES = "SELECT City.*, cityIdentity = capital AS capital FROM City LEFT OUTER JOIN Country ON countryCode=longCode WHERE countryCode=? ORDER BY name";
+
 
 	/**
 	 * Application entry point.
@@ -67,7 +80,7 @@ public class WorldApp {
 	static public void processHelpCommand (final String arguments) {
 		System.out.println("List of available commands:");
 		System.out.println("- help: displays this help");
-		System.out.println("- query-countries: displays all countries as JSON");
+		System.out.println("- query-countries <JSON>: displays any countries matching the given filter criteria as JSON");
 		System.out.println("- query-languages <country-id>: displays all languages of a given country as JSON");
 		System.out.println("- query-cities <country-id>: displays all cities of a given country as JSON, with capitals marked as such");
 		System.out.println("- quit: terminates this program");
@@ -82,7 +95,24 @@ public class WorldApp {
 	 * @throws SQLException if there is an SQL related problem
 	 */
 	static private void processQueryCountriesCommand (final Connection jdbcConnection, final String arguments) throws NullPointerException, SQLException {
-		// TODO: query and display all countries as JSON
+		try (PreparedStatement jdbcStatement = jdbcConnection.prepareStatement(QUERY_COUNTRIES)) {
+			try (ResultSet tableCursor = jdbcStatement.executeQuery()) {
+				final ResultSetMetaData metaData = tableCursor.getMetaData();
+				final List<Map<String,Object>> rowMaps = new ArrayList<>();
+
+				while (tableCursor.next()) {
+					final Map<String,Object> rowMap = new HashMap<>();
+					rowMaps.add(rowMap);
+
+					for (int index = 1; index <= metaData.getColumnCount(); ++index)
+						rowMap.put(metaData.getColumnLabel(index), tableCursor.getObject(index));
+				}
+
+				System.out.println("Countries:");
+				for (final Map<String,Object> rowMap : rowMaps)
+					System.out.println(JSON.stringify(rowMap));
+			}
+		}
 	}
 
 
@@ -94,7 +124,26 @@ public class WorldApp {
 	 * @throws SQLException if there is an SQL related problem
 	 */
 	static private void processQueryLanguagesCommand (final Connection jdbcConnection, final String arguments) throws NullPointerException, SQLException {
-		// TODO: parse country-id from the given arguments-text, query and display as JSON
+		try (PreparedStatement jdbcStatement = jdbcConnection.prepareStatement(QUERY_LANGUAGES)) {
+			jdbcStatement.setString(1, arguments);
+
+			try (ResultSet tableCursor = jdbcStatement.executeQuery()) {
+				final ResultSetMetaData metaData = tableCursor.getMetaData();
+				final List<Map<String,Object>> rowMaps = new ArrayList<>();
+
+				while (tableCursor.next()) {
+					final Map<String,Object> rowMap = new HashMap<>();
+					rowMaps.add(rowMap);
+
+					for (int index = 1; index <= metaData.getColumnCount(); ++index)
+						rowMap.put(metaData.getColumnLabel(index), tableCursor.getObject(index));
+				}
+
+				System.out.println("Languages of country: " + arguments);
+				for (final Map<String,Object> rowMap : rowMaps)
+					System.out.println(JSON.stringify(rowMap));
+			}
+		}
 	}
 
 
@@ -107,9 +156,27 @@ public class WorldApp {
 	 * @throws SQLException if there is an SQL related problem
 	 */
 	static private void processQueryCitiesCommand (final Connection jdbcConnection, final String arguments) throws NullPointerException, SQLException {
-		// TODO: parse country-id from the given arguments-text, query and display as JSON;
-		//       join each city with its respective country to detect capitals,
-		//       but solely display city information!
+		try (PreparedStatement jdbcStatement = jdbcConnection.prepareStatement(QUERY_CITIES)) {
+			jdbcStatement.setString(1, arguments);
+
+			try (ResultSet tableCursor = jdbcStatement.executeQuery()) {
+				final ResultSetMetaData metaData = tableCursor.getMetaData();
+				final List<Map<String,Object>> rowMaps = new ArrayList<>();
+
+				while (tableCursor.next()) {
+					final Map<String,Object> rowMap = new HashMap<>();
+					rowMaps.add(rowMap);
+
+					for (int index = 1; index <= metaData.getColumnCount(); ++index)
+						rowMap.put(metaData.getColumnLabel(index), tableCursor.getObject(index));
+					rowMap.put("capital", tableCursor.getBoolean(metaData.getColumnCount()));
+				}
+
+				System.out.println("Cities of country: " + arguments);
+				for (final Map<String,Object> rowMap : rowMaps)
+					System.out.println(JSON.stringify(rowMap));
+			}
+		}
 	}
 
 
