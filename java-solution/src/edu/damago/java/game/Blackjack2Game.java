@@ -8,6 +8,7 @@ import edu.damago.java.tool.Maths;
 
 /**
  * Instances of this class represent Blackjack games.
+ * @author Sascha Baumeister
  */
 public class Blackjack2Game {
 	static private final List<Integer> BLACK_JACK = Arrays.asList(7, 7, 7);

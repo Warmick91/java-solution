@@ -3,6 +3,7 @@ package edu.damago.java.game;
 
 /**
  * Instances represent pin colors.
+ * @author Sascha Baumeister
  */
 public enum PinColor {
 	YELLOW('Y'),

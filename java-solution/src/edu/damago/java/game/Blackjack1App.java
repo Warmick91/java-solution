@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 /**
  * Facade for the text line input based Black-Jack application
  * using object-based programming techniques and exception handling.
+ * @author Sascha Baumeister
  */
 public class Blackjack1App {
 

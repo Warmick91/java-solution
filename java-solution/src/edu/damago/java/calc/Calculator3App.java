@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 /**
  * Facade for the interactive calculator text application,
  * based on object-based programming techniques.
+ * @author Sascha Baumeister
  */
 public class Calculator3App {
 

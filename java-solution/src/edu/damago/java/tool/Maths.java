@@ -3,8 +3,10 @@ package edu.damago.java.tool;
 import java.security.SecureRandom;
 import java.util.Random;
 
+
 /**
  * Facade for additional math operations.
+ * @author Sascha Baumeister
  */
 public class Maths {
 	static private final Random RANDOMIZER = new SecureRandom();

@@ -12,6 +12,7 @@ import java.nio.file.Paths;
 /**
  * Facade for the non-interactive text file editor application,
  * based on runtime arguments and structured programming techniques.
+ * @author Sascha Baumeister
  */
 public class EditTextFileApp {
 

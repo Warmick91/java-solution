@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 /**
  * Wraps an {@link SQLException} with an unchecked exception.
+ * @author Sascha Baumeister
  */
 public class UncheckedSQLException extends RuntimeException {
 	static private final long serialVersionUID = 1L;

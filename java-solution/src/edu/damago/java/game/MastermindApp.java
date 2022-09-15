@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * Facade for the text line input based Mastermind application
  * using object-based programming techniques and exception handling.
+ * @author Sascha Baumeister
  */
 public class MastermindApp {
 

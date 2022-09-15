@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 /**
  * Facade for the non-interactive copy file send application (a client),
  * based on runtime arguments and structured programming techniques.
+ * @author Sascha Baumeister
  */
 public class CopyFileSendApp {
 
