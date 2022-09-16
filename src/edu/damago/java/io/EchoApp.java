@@ -8,6 +8,7 @@ import java.io.IOException;
  * based on runtime arguments and structured programming techniques.
  * This application only makes sense if started using piping for
  * sysin and sysout, like "< input.zip > output.zip".
+ * @author Sascha Baumeister
  */
 public class EchoApp {
 

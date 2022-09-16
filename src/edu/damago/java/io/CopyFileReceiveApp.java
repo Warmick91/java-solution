@@ -13,6 +13,7 @@ import java.nio.file.StandardOpenOption;
 /**
  * Facade for the non-interactive copy file receive text application (a server),
  * based on runtime arguments and structured programming techniques.
+ * @author Sascha Baumeister
  */
 public class CopyFileReceiveApp {
 

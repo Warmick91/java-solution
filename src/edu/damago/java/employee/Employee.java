@@ -2,6 +2,7 @@ package edu.damago.java.employee;
 
 /**
  * Instances represent employees.
+ * @author Sascha Baumeister
  */
 // Changed into JavaBean class featuring encapsulation.
 // Added gender as instance variable of an enum type

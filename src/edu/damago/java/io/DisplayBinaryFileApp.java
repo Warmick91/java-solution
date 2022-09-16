@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 /**
  * Facade for the non-interactive display binary file text application,
  * based on runtime arguments and structured programming techniques.
+ * @author Sascha Baumeister
  */
 public class DisplayBinaryFileApp {
 

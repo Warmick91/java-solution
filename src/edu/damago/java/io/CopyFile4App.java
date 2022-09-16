@@ -18,6 +18,7 @@ import java.nio.file.StandardOpenOption;
  * based on runtime arguments and structured programming techniques.
  * This multi-threaded design targets systems with at least two hard disks,
  * copying data between them.
+ * @author Sascha Baumeister
  */
 public class CopyFile4App {
 	static private final int BUFFER_SIZE = 0x10_000_000;

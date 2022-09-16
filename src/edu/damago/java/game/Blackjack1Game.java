@@ -6,6 +6,7 @@ import edu.damago.java.tool.Maths;
 
 /**
  * Instances of this class represent Blackjack games.
+ * @author Sascha Baumeister
  */
 public class Blackjack1Game {
 	static private final int[] BLACK_JACK = { 7, 7, 7 };

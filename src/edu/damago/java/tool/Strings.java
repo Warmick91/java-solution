@@ -1,5 +1,6 @@
 package edu.damago.java.tool;
 
+
 /**
  * Facade for additional String operations.
  */

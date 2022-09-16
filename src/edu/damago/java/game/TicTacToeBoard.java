@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * TicTacToe boards based on object-based programming techniques.
+ * @author Sascha Baumeister
  */
 public class TicTacToeBoard {
 	static public enum Opponent { X, O }

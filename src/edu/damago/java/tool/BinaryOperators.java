@@ -8,6 +8,7 @@ import java.util.function.DoubleBinaryOperator;
 /**
  * Facade providing operations for binary operators,
  * i.e. operators featuring exactly two parameters.
+ * @author Sascha Baumeister
  */
 public class BinaryOperators {
 	static public final Map<String,DoubleBinaryOperator> POOL = new HashMap<>();

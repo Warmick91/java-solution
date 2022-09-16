@@ -10,6 +10,7 @@ import edu.damago.java.tool.Strings;
 
 /**
  * Instances of this class represent Mastermind boards.
+ * @author Sascha Baumeister
  */
 public class MastermindBoard {
 	static private final int MAX_PIN_COLOR_COUNT = PinColor.values().length;

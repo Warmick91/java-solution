@@ -10,6 +10,7 @@ import java.nio.file.StandardCopyOption;
 /**
  * Facade for the non-interactive copy file text application (version 1),
  * based on runtime arguments and structured programming techniques.
+ * @author Sascha Baumeister
  */
 public class CopyFile1App {
 

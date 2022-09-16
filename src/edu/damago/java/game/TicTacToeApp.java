@@ -9,6 +9,7 @@ import edu.damago.java.game.TicTacToeBoard.Opponent;
 /**
  * Facade for the interactive TicTacToe text application,
  * based on object-based programming techniques.
+ * @author Sascha Baumeister
  */
 public class TicTacToeApp {
 

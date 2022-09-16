@@ -13,6 +13,7 @@ import java.util.Arrays;
 /**
  * Facade for the interactive employee text application (version 1),
  * based on structured programming techniques.
+ * @author Sascha Baumeister
  */
 public class Employee1App {
 

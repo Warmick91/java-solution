@@ -14,6 +14,7 @@ import edu.damago.java.employee.Employee.Gender;
 /**
  * Facade for the interactive employee text application (version 1),
  * based on object-based programming techniques.
+ * @author Sascha Baumeister
  */
 public class Employee2App {
 

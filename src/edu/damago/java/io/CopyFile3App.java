@@ -12,6 +12,7 @@ import java.nio.file.StandardOpenOption;
 /**
  * Facade for the non-interactive copy file text application (version 3),
  * based on runtime arguments and structured programming techniques.
+ * @author Sascha Baumeister
  */
 public class CopyFile3App {
 	static private final int BUFFER_SIZE = 0x100000;
