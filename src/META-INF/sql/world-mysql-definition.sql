@@ -32,7 +32,6 @@ CREATE TABLE CountryLanguage (
   FOREIGN KEY (countryCode) REFERENCES Country (longCode) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-
 CREATE TABLE City (
   cityIdentity BIGINT NOT NULL AUTO_INCREMENT,
   name CHAR(35) NOT NULL,
@@ -43,3 +42,12 @@ CREATE TABLE City (
   FOREIGN KEY (countryCode) REFERENCES Country (longCode) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+
+DELIMITER #
+CREATE PROCEDURE queryNonCapitalCities (IN countryReference CHAR(3))
+BEGIN
+	SELECT City.*
+		FROM City INNER JOIN Country ON countryCode=longCode
+		WHERE cityIdentity <> capitalReference AND countryCode = countryReference;
+END#
+DELIMITER ;

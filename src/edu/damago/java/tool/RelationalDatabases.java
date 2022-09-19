@@ -130,7 +130,9 @@ public class RelationalDatabases {
 	 */
 	static public List<Map<String,Object>> executeQuery (final Connection jdbcConnection, final String sql, final Object... parameters) throws NullPointerException, IllegalArgumentException, SQLException {
 		try (PreparedStatement jdbcStatement = jdbcConnection.prepareStatement(sql)) {
-			if (jdbcStatement.getParameterMetaData().getParameterCount() != parameters.length) throw new IllegalArgumentException();
+			final int parameterCount = jdbcStatement.getParameterMetaData().getParameterCount();
+			if (parameterCount != parameters.length) throw new IllegalArgumentException("expected " + parameterCount + " arguments, actual count is " + parameters.length);
+
 			for (int index = 0; index < parameters.length; ++index)
 				jdbcStatement.setObject(index + 1, parameters[index]);
 
@@ -158,7 +160,9 @@ public class RelationalDatabases {
 	 */
 	static public <T> List<T> executeQuery (final Connection jdbcConnection, final String sql, final Function<ResultSet,T> rowMapper, final Object... parameters) throws NullPointerException, IllegalArgumentException, SQLException {
 		try (PreparedStatement jdbcStatement = jdbcConnection.prepareStatement(sql)) {
-			if (jdbcStatement.getParameterMetaData().getParameterCount() != parameters.length) throw new IllegalArgumentException();
+			final int parameterCount = jdbcStatement.getParameterMetaData().getParameterCount();
+			if (parameterCount != parameters.length) throw new IllegalArgumentException("expected " + parameterCount + " arguments, actual count is " + parameters.length);
+
 			for (int index = 0; index < parameters.length; ++index)
 				jdbcStatement.setObject(index + 1, parameters[index]);
 
@@ -183,7 +187,9 @@ public class RelationalDatabases {
 	 */
 	static public long executeChange1 (final Connection jdbcConnection, final String sql, final Object... parameters) throws NullPointerException, IllegalArgumentException, SQLException {
 		try (PreparedStatement jdbcStatement = jdbcConnection.prepareStatement(sql)) {
-			if (jdbcStatement.getParameterMetaData().getParameterCount() != parameters.length) throw new IllegalArgumentException();
+			final int parameterCount = jdbcStatement.getParameterMetaData().getParameterCount();
+			if (parameterCount != parameters.length) throw new IllegalArgumentException("expected " + parameterCount + " arguments, actual count is " + parameters.length);
+
 			for (int index = 0; index < parameters.length; ++index)
 				jdbcStatement.setObject(index + 1, parameters[index]);
 
@@ -232,7 +238,9 @@ public class RelationalDatabases {
 	 */
 	static public long[][] executeChange2 (final Connection jdbcConnection, final String sql, final Object... parameters) throws NullPointerException, IllegalArgumentException, SQLException {
 		try (PreparedStatement jdbcStatement = jdbcConnection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-			if (jdbcStatement.getParameterMetaData().getParameterCount() != parameters.length) throw new IllegalArgumentException();
+			final int parameterCount = jdbcStatement.getParameterMetaData().getParameterCount();
+			if (parameterCount != parameters.length) throw new IllegalArgumentException("expected " + parameterCount + " arguments, actual count is " + parameters.length);
+
 			for (int index = 0; index < parameters.length; ++index)
 				jdbcStatement.setObject(index + 1, parameters[index]);
 
@@ -283,6 +291,7 @@ public class RelationalDatabases {
 			}
 		}
 	}
+
 
 
 	/**
